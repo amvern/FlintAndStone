@@ -1,7 +1,6 @@
 package blunthorn.flintandstone;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -9,6 +8,8 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
@@ -22,12 +23,11 @@ public class FlintAndStone implements ModInitializer {
 	public final Item ITEM = getRegisteredFlintAndStone();
 
 	private Item getRegisteredFlintAndStone(){
-		FabricItemSettings fabricItemSettings = new FabricItemSettings()
+		Item.Settings fabricItemSettings = new Item.Settings()
 			.maxDamage(1);
 
-		Item flintAndStone = new FlintAndStoneItem(fabricItemSettings);
-		Item registeredItem = Registry.register(Registries.ITEM, new Identifier(MOD_ID, "flint_and_stone"), flintAndStone);
-		return registeredItem;
+		final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "flint_and_stone"));
+		return Items.register(registryKey, FlintAndStoneItem::new, fabricItemSettings);
 	}
 
 	private void registerFlintAndStoneToToolItemGroup(FabricItemGroupEntries entries){

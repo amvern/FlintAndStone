@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        [
+            "minecraft:cobblestone"
+        ],
+        [
+            "minecraft:flint"
+        ]
+    ],
+    "result": {
+        "id": "flintandstone:flint_and_stone",
+        "count": 1
+    }
+}

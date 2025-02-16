@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -30,7 +31,7 @@ public class FlintAndStone implements ModInitializer {
 	}
 
 	private void registerFlintAndStoneToToolItemGroup(FabricItemGroupEntries entries){
-		entries.add(ITEM);
+		entries.addBefore(Items.FLINT_AND_STEEL,ITEM);
 	}
 
 	@Override
